@@ -1,0 +1,13 @@
+ul {
+    display: flex;
+    margin: 0;
+}
+
+ul li {
+    padding: 5px;
+}
+
+ul li .active {
+    background: blue;
+    color: #fff;
+}
