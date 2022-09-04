@@ -6,19 +6,19 @@ import {Search} from './../components/Search'
 
 export const Content = () => {
     const [movies, setMovies] = useState([])
+    
     useEffect(() => {
         fetch('https://www.omdbapi.com/?apikey=85b668c0&s=anime')
             .then(response => response.json())
             .then(data => setMovies(data.Search))
-    })
+    }, [])
     
-    const searchMovies = (str) => {
-        console.log(str)
-        fetch(`https://www.omdbapi.com/?apikey=85b668c0&s=${str}`)
+    const searchMovies = (str, type='all') => {
+        fetch(`https://www.omdbapi.com/?apikey=85b668c0&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
             .then(response => response.json())
             .then(data => setMovies(data.Search))
     }
-
+    
     return <main className="container content">
         <Search searchMovies={searchMovies} />
         {
